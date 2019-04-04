@@ -54,7 +54,7 @@
                             <div style="width: 350px;">${user.email}</div>
                             <div style="width: 150px;">${user.originalName}</div>
                             <div>
-                                <input type="file" id="upload-file">
+                                <input type="file" id="upload-file${user.id}">
                                 <button onclick="uploadFile(this, ${user.id})">사진 등록</button>
                                 <button onclick="deleteUser(this, ${user.id})">삭제</button>
                             </div>
@@ -69,7 +69,7 @@
 
     async function uploadFile(button, id) {
         try {
-            let file = $('#upload-file')[0].files[0];
+            let file = $(`#upload-file${id}`)[0].files[0];
             let formData = new FormData();
             formData.append('srcFile', file);
             let response = await $.ajax({
