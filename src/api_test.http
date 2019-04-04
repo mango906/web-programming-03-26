@@ -1,0 +1,65 @@
+GET http://localhost:8080/list
+Accept: application/json
+
+###
+
+POST http://localhost:8080/adduser
+Content-Type: application/json
+
+{
+  "username": "1555",
+  "email": "minkb01@dgsw.hs.kr"
+}
+
+###
+
+DELETE http://localhost:8080/deleteUser/1
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/modifyUser
+Content-Type: application/json
+
+{
+  "id": "1",
+  "username": "test11",
+  "email": "test@dgsw.hs.kr"
+}
+
+###
+
+GET http://localhost:8080/getOneUser/1
+Accept: application/json
+
+###
+
+DELETE http://localhost:8080/deleteComment/2
+Accept: application/json;
+
+###
+
+POST http://localhost:8080/addComment
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "content": "hello"
+}
+
+###
+
+PUT http://localhost:8080/updateComment/2
+Content-Type: application/json
+
+{
+  "content": "bye"
+}
+
+###
+
+GET http://localhost:8080/getComment/1
+Accept: application/json
+
+###
+
