@@ -20,6 +20,7 @@ public class User {
 
     private String username;
     private String email;
+    private String password;
     private String originalName;
     private String storedPath;
 
@@ -33,10 +34,13 @@ public class User {
         this.email = email;
     }
 
-    public User(String username, String email, String originalName, String storedPath) {
+    public User(String username, String email, String password, String originalName, String storedPath, LocalDateTime joined, LocalDateTime modified) {
         this.username = username;
         this.email = email;
+        this.password = password;
         this.originalName = originalName;
         this.storedPath = storedPath;
+        this.joined = joined;
+        this.modified = modified;
     }
 }

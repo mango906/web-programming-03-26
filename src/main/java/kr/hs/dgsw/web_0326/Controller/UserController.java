@@ -37,4 +37,9 @@ public class UserController {
     public User getUser(@PathVariable Long id){
         return this.userService.getOneUser(id);
     }
+
+    @PostMapping("/login")
+    public User login(@RequestBody User user){
+        return this.userService.login(user.getEmail(), user.getPassword());
+    }
 }

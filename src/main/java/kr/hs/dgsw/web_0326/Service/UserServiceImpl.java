@@ -1,6 +1,7 @@
 package kr.hs.dgsw.web_0326.Service;
 
 import kr.hs.dgsw.web_0326.Domain.User;
+import kr.hs.dgsw.web_0326.Protocol.AttachmentProtocol;
 import kr.hs.dgsw.web_0326.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,26 @@ public class UserServiceImpl implements UserService {
         Optional<User> found = this.userRepository.findById(id);
         if (found.isPresent()) return found.get();
         else return null;
+    }
+
+    @Override
+    public AttachmentProtocol getImage(Long id) {
+        Optional<User> found = this.userRepository.findById(id);
+        if(found.isPresent()) return new AttachmentProtocol(found.get().getStoredPath(), found.get().getOriginalName());
+        else return null;
+    }
+
+    @Override
+    public User login(String email, String password) {
+        Optional<User> found = this.userRepository.findByEmail(email);
+        if(found.isPresent()){
+            if(found.get().getPassword().equals(password)){
+                return found.get();
+            } else{
+                return null;
+            }
+        } else{
+            return null;
+        }
     }
 }
