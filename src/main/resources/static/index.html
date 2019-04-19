@@ -177,13 +177,22 @@
             dataType: "json",
             success: (res) => {
                 if (res != null) {
+                    console.log(res);
                     userInfo = res;
                     $("#user-info").empty();
                     $("#user-info").append(`
                         <div id="user-name">${res.username}</div>
                         <div id="user-email">${res.email}</div>
                         <div id="user-joined">${getDate(new Date(res.joined))}</div>
+                        <img id="user-image" width="200" height="200">
                     `)
+
+                    $("#user-image").src = userInfo.storedPath;
+
+                    if(userInfo.storedPath === null){
+                        console.log("error!");
+                        $("#user-image").attr('src', 'user.png');
+                    }
                     // $("#user-name").text(res.username);
                     // $("#user-email").text(res.email);
                     // $("#user-joined").text(getDate(new Date(res.joined)));
@@ -199,7 +208,7 @@
     }
 
     function getDate(date) {
-        return `${date.getFullYear()}:${date.getMonth() + 1}:${date.getDate()}: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     }
 
     function loginCancel() {
